@@ -2,27 +2,25 @@
 Role of setup.py file : Setup.py file contains the metadata about python packages 
 , Dependencies of the project and distribution of packages. '''
 
-from setuptools import setup , find_packages
+from setuptools import find_packages , setup
 
 def get_requirements(file_path):
-    ## Doc String
-    '''This function returns the List of Requirements in the requirements.txt file'''
-
+    '''
+        This Function will Return the List of Requirements
+    '''
     requirements = []
-    with open(file_path) as f:
-        requirements = f.readlines()
-        
-        ## readlines() will also read \n , our task is to remove /n from requirements list
 
+    with open(file_path) as file_obj:
+        requirements=file_obj.readlines()
+        ## readlines() will also read \n so are task is to remove \n from this list
         requirements = [req.replace('\n' , "") for req in requirements]
-
     return requirements
 
 setup(
-    name = 'MCQ Generator',
-    version= '0.0.1',
-    author= 'Harsh Shukla',
-    author_email= 'hs081449@gmail.com',
-    packages= find_packages(),
-    install_requires = get_requirements('requirements.txt')
+    name = 'mcqgenai proj',
+    version = '0.0.1',
+    author='Harsh Shukla',
+    author_email= 'hs0814497@gmail.com',
+    install_requires = get_requirements('requirements.txt'),
+    packages = find_packages()
 )
